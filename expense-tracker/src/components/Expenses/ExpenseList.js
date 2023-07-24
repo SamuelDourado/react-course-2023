@@ -23,20 +23,30 @@ function ExpenseList(props) {
     console.log(selectedYear);
   }
 
+  const filteredExpenses = expenses.filter((expense) => { 
+    return expense.date.getFullYear().toString() === year;
+  });
+
+  let expensesContent = <p>No Expenses found.</p>;
+
+  if(filteredExpenses.length > 0) {
+    expensesContent = filteredExpenses.map((expense) => {
+      return (
+        <ExpenseItem
+          key={expense.id}
+          title={expense.title}
+          amount={expense.amount}
+          date={expense.date}
+        />
+      );
+    }); 
+  }
 
   return (
     <Card className="expenses">
       <ExpensesFilter selected={year} onChangeYear={changeYearHandler}/>
       <p>Data for years {filterInfoText} is hidden.</p>
-      {expenses.map((expense) => {
-        return (
-          <ExpenseItem
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        );
-      })}
+      {expensesContent}
     </Card>
   );
 }
