@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import Form from './conponents/Saving/Form';
 import Table from './conponents/Table/Table';
 import Header from './conponents/UI/Header';
 
 function App() {
+
+  const [caculatedSavings, setCaculatedSavings] = useState([]);
+
   const calculateHandler = (userInput) => {
     // Should be triggered when form is submitted
     // You might not directly want to bind it to the submit event on the form though...
@@ -28,17 +32,18 @@ function App() {
     }
 
     // do something with yearlyData ...
+    setCaculatedSavings(yearlyData);
   };
 
   return (
     <div>
       <Header />
-      <Form />
+      <Form onSavingCaculate={calculateHandler} />
 
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
 
-      <Table />
+      <Table results={caculatedSavings} />
     </div>
   );
 }

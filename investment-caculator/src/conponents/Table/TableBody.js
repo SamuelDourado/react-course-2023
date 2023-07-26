@@ -1,13 +1,16 @@
-function TableBody() {
+function TableBody(props) {
+  const results = props.results.map((result) => (
+    <tr>
+      <td>{result.year}</td>
+      <td>{result.savingsEndOfYear}</td>
+      <td> {result.yearlyInterest} </td>
+      <td>TOTAL INTEREST GAINED</td>
+      <td>TOTAL INVESTED CAPITAL</td>
+    </tr>
+  ));
   return (
     <tbody>
-      <tr>
-        <td>YEAR NUMBER</td>
-        <td>TOTAL SAVINGS END OF YEAR</td>
-        <td>INTEREST GAINED IN YEAR</td>
-        <td>TOTAL INTEREST GAINED</td>
-        <td>TOTAL INVESTED CAPITAL</td>
-      </tr>
+      {results}
     </tbody>
   );
 }

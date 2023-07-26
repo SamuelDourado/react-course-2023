@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import style from './Form.module.css';
 
-function Form() {
+function Form(props) {
   const [currentSavings, setCurrentSavings] = useState(0);
   const [yearlySavings, setYearlySavings] = useState(0);
   const [expectedInterest, setExpectedInterest] = useState(0);
@@ -26,6 +26,14 @@ function Form() {
   const onSubmitHandler = (event) => {
     event.preventDefault();
     console.log("Form submited!");
+    props.onSavingCaculate(
+      {
+        'current-savings': currentSavings,
+        'yearly-contribution': yearlySavings,
+        'expected-return': expectedInterest,
+        'duration': investmentDuration
+      }
+    );
   };
 
   const onReset = () => {
