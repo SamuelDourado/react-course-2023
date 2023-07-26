@@ -6,6 +6,7 @@ import Header from './conponents/UI/Header';
 function App() {
 
   const [caculatedSavings, setCaculatedSavings] = useState([]);
+  const [initialInvestment, setInitialInvestment] = useState(0);
 
   const calculateHandler = (userInput) => {
     // Should be triggered when form is submitted
@@ -17,6 +18,8 @@ function App() {
     const yearlyContribution = +userInput['yearly-contribution']; // as mentioned: feel free to change the shape...
     const expectedReturn = +userInput['expected-return'] / 100;
     const duration = +userInput['duration'];
+
+    setInitialInvestment(currentSavings);
 
     // The below code calculates yearly results (total savings, interest etc)
     for (let i = 0; i < duration; i++) {
@@ -43,7 +46,7 @@ function App() {
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
 
-      <Table results={caculatedSavings} />
+      <Table results={caculatedSavings} initialInvestment={initialInvestment} />
     </div>
   );
 }
