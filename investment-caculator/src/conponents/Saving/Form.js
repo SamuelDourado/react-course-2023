@@ -30,6 +30,10 @@ function Form() {
 
   const onReset = () => {
     console.log("Form Reseted!");
+    setCurrentSavings(0);
+    setYearlySavings(0);
+    setExpectedInterest(0);
+    setInvestmentDuration(0);
   };
 
   return (
@@ -37,11 +41,11 @@ function Form() {
       <div className={style['input-group']}>
         <p>
           <label htmlFor="current-savings">Current Savings ($)</label>
-          <input type="number" id="current-savings" />
+          <input type="number" onChange={changeCurrentSavingsHandler} value={currentSavings} id="current-savings" />
         </p>
         <p>
           <label htmlFor="yearly-contribution">Yearly Savings ($)</label>
-          <input type="number" id="yearly-contribution" />
+          <input type="number" onChange={changeYearlySavingsHandler} value={yearlySavings} id="yearly-contribution" />
         </p>
       </div>
       <div className={style['input-group']}>
@@ -49,11 +53,11 @@ function Form() {
           <label htmlFor="expected-return">
             Expected Interest (%, per year)
           </label>
-          <input type="number" id="expected-return" />
+          <input type="number" onChange={changeExpectedInterestHandler} value={expectedInterest} id="expected-return" />
         </p>
         <p>
           <label htmlFor="duration">Investment Duration (years)</label>
-          <input type="number" id="duration" />
+          <input type="number" onChange={changeInvestmentDurationHandler} value={investmentDuration} id="duration" />
         </p>
       </div>
       <p className={style.actions}>
