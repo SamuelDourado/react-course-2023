@@ -3,7 +3,7 @@ import Card from "../UI/Card";
 import Button from "../UI/Button";
 import style from "./AddUser.module.css";
 
-function AddUser() {
+function AddUser(props) {
   const [userInput, setUserInput] = useState({
     username: '',
     age: 0
@@ -11,6 +11,7 @@ function AddUser() {
 
   const addUserHandler = (event) => {
     event.preventDefault();
+    props.onAddUser(userInput);
   };
 
   const changeInput = (name, value) => {
@@ -24,7 +25,7 @@ function AddUser() {
 
   return (
     <Card>
-      <form>
+      <form onSubmit={addUserHandler}>
         <div className={style.input}>
           <label htmlFor="username">Username</label>
           <input id="username" type="text" name="username" value={userInput.username} onChange={event => {changeInput('username', event.target.value)}} />
