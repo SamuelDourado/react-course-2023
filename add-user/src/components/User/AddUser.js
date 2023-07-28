@@ -11,7 +11,7 @@ function AddUser(props) {
 
   const addUserHandler = (event) => {
     event.preventDefault();
-    props.onAddUser(userInput);
+    props.onAddUser({id: Math.random(), ...userInput});
   };
 
   const changeInput = (name, value) => {

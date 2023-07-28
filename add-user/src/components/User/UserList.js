@@ -1,14 +1,14 @@
 import style from './UserList.module.css';
 
 function UserList(props) {
-    const content = '';
+    let content = '';
     if(props.users) {
-        props.users.map(user => {
-            return <li>{user.name}</li>
+        content = props.users.map(user => {
+            return <li key={user.id}>{user.username}</li>
         });
     }
 
-    return <div className={style.users}>
+    return <div style={{background: 'white'}} className={style.users}>
         <ul>
             {content}
         </ul>
