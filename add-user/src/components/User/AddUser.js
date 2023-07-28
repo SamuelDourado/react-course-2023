@@ -12,7 +12,6 @@ function AddUser(props) {
   const [userInput, setUserInput] = useState(INITIAL_USER);
 
   const validateUser = user => {
-    console.log(user);
     if(user.username.trim().lenhth === 0) {
       return false;
     }
