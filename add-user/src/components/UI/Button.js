@@ -1,7 +1,14 @@
-import style from './Button.module.css';
+import style from "./Button.module.css";
 
-function Button() {
-    return <button type="submit" className={style.button}>Add User</button>
+function Button(props) {
+  return (
+    <button 
+        type={props.type || "button"} 
+        onClick={props.onClick}
+        className={style.button}>
+      {props.children}
+    </button>
+  );
 }
 
 export default Button;

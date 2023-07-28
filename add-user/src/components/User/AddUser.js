@@ -30,7 +30,7 @@ function AddUser(props) {
           <input id="username" type="text" name="username" value={userInput.username} onChange={event => {changeInput('username', event.target.value)}} />
           <label htmlFor="age">Age(Years)</label>
           <input id="age" type="number" name="age" value={userInput.age} onChange={event => {changeInput('age', event.target.value)}} />
-        <Button />
+          <Button type="submit"> Add User </Button>
       </form>
     </Card>
   );
