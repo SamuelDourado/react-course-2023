@@ -24,17 +24,12 @@ function AddUser(props) {
   };
 
   return (
-    <Card>
+    <Card className={style.input}>
       <form onSubmit={addUserHandler}>
-        <div className={style.input}>
           <label htmlFor="username">Username</label>
           <input id="username" type="text" name="username" value={userInput.username} onChange={event => {changeInput('username', event.target.value)}} />
-        </div>
-
-        <div className={style.input}>
           <label htmlFor="age">Age(Years)</label>
           <input id="age" type="number" name="age" value={userInput.age} onChange={event => {changeInput('age', event.target.value)}} />
-        </div>
         <Button />
       </form>
     </Card>
