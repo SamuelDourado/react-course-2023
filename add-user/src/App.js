@@ -8,12 +8,7 @@ function App() {
   const addUserHandler = (newUser) => {
     console.log(newUser);
     setUsers( (prevState) => {
-      let lista = [];
-      if(prevState) {
-        lista = prevState;
-      }
-      lista.push(newUser);
-      return (lista);
+      return [...prevState, newUser];
     });
   };
 
