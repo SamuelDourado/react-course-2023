@@ -9,19 +9,33 @@ const INITIAL_USER = {
   age: "0",
 };
 
+const INITIAL_ERROR_INVALID_INPUT = {
+  title: 'Invalid input',
+  message: 'Please enter a valid name or age (non-empty values)'
+};
+
+const INITIAL_ERROR_INVALID_AGE = {
+  title: 'Invalid age',
+  message: 'Please enter a valid age (>0)'
+};
+
 function AddUser(props) {
   const [userInput, setUserInput] = useState(INITIAL_USER);
+  const [error, setError] = useState();
 
   const validateUser = (user) => {
     if (user.username.trim().lenhth === 0) {
+      setError(INITIAL_ERROR_INVALID_INPUT);
       return false;
     }
 
     if (user.age.trim().lenhth === 0) {
+      setError(INITIAL_ERROR_INVALID_INPUT);
       return false;
     }
 
     if (+user.age < 1) {
+      setError(INITIAL_ERROR_INVALID_AGE);
       return false;
     }
     return true;
@@ -47,9 +61,13 @@ function AddUser(props) {
     });
   };
 
+  const errorHandler = () => {
+    setError(null);
+  };
+
   return (
     <div>
-      <ErrorModal title="An error occured!" message="Something went wrong!" />
+      { error && <ErrorModal title={error.title} message={error.message}  onConfirm={errorHandler}/>}
       <Card className={style.input}>
         <form onSubmit={addUserHandler}>
           <label htmlFor="username">Username</label>
