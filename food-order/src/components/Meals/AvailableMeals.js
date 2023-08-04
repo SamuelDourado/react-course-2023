@@ -18,7 +18,7 @@ const AvailableMeals = () => {
   return (
     <section className={classes.mealsList}>
       <Card>
-        <ul>{mealsList}</ul>
+        <ul style={{listStyleType: 'none'}}>{mealsList}</ul>
       </Card>
     </section>
   );
